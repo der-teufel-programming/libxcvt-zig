@@ -1,6 +1,7 @@
 .{
-    .name = "xorgcvt",
+    .name = .xorgcvt,
     .version = "0.1.0",
+    .fingerprint = 0xfa369e8413a36c0d,
     .paths = .{
         "build.zig",
         "build.zig.zon",

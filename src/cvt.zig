@@ -112,7 +112,7 @@ fn apply_h_granularity(value: u32) u32 {
     return value - (value % CVT_H_GRANULARITY);
 }
 
-fn get_percentage(value: u32, perc: f32) u23 {
+fn get_percentage(value: u32, perc: f32) u32 {
     const flt: f32 = @floatFromInt(value);
     const portion = flt * perc / 100.0;
     return @intFromFloat(portion);
@@ -363,7 +363,7 @@ pub fn parse_modeline(modeline: []const u8) !Mode {
     const hsync_khz: f32 = float(dot_clock_khz) / float(htotal);
     const vrefresh_hz: f32 = 1000 * hsync_khz / float(vtotal);
 
-    return Mode{
+    return .{
         .dot_clock_khz = dot_clock_khz,
         .hsync_khz = hsync_khz,
         .vrefresh_hz = vrefresh_hz,

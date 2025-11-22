@@ -5,13 +5,11 @@ pub fn build(b: *std.Build) void {
         .root_source_file = b.path("src/cvt.zig"),
     });
 
-    const test_mod = b.createModule(.{
-        .root_source_file = b.path("src/cvt.zig"),
-        .target = b.graph.host,
-    });
-
     const test_exe = b.addTest(.{
-        .root_module = test_mod,
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("src/cvt.zig"),
+            .target = b.graph.host,
+        }),
     });
 
     const test_run = b.addRunArtifact(test_exe);
